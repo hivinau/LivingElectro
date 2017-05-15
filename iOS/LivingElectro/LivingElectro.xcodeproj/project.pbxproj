@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */; };
 		FC0F45BA1EC7B00D005B8143 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F45B91EC7B00D005B8143 /* AppDelegate.swift */; };
 		FC0F45BF1EC7B00D005B8143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0F45BD1EC7B00D005B8143 /* Main.storyboard */; };
 		FC0F45C21EC7B00D005B8143 /* LivingElectro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC0F45C01EC7B00D005B8143 /* LivingElectro.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
 		FC0F45B61EC7B00D005B8143 /* LivingElectro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivingElectro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0F45B91EC7B00D005B8143 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC0F45BE1EC7B00D005B8143 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				FC0F45EB1EC7B402005B8143 /* SplashScreen.swift */,
 				FC0F45ED1EC7B40E005B8143 /* Home.swift */,
 				FC0F45EF1EC7B41E005B8143 /* Titles.swift */,
+				B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */,
 				FC0F45F11EC7B429005B8143 /* Songs.swift */,
 			);
 			name = controllers;
@@ -385,6 +388,7 @@
 				FC0F46071EC7BAC1005B8143 /* Song+CoreDataProperties.swift in Sources */,
 				FC0F46121EC7D87E005B8143 /* PaddingLabel.swift in Sources */,
 				FC0F460B1EC7BC94005B8143 /* Part+CoreDataProperties.swift in Sources */,
+				B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */,
 				FC0F45EE1EC7B40E005B8143 /* Home.swift in Sources */,
 				FC0F46101EC7C527005B8143 /* TitleCell.swift in Sources */,
 				FC0F45BA1EC7B00D005B8143 /* AppDelegate.swift in Sources */,
@@ -652,6 +656,7 @@
 				FC0F45E31EC7B00D005B8143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC0F45E41EC7B00D005B8143 /* Build configuration list for PBXNativeTarget "LivingElectroTests" */ = {
 			isa = XCConfigurationList;
@@ -660,6 +665,7 @@
 				FC0F45E61EC7B00D005B8143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC0F45E71EC7B00D005B8143 /* Build configuration list for PBXNativeTarget "LivingElectroUITests" */ = {
 			isa = XCConfigurationList;
@@ -668,6 +674,7 @@
 				FC0F45E91EC7B00D005B8143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

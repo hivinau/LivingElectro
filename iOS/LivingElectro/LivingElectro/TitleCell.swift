@@ -17,8 +17,20 @@ public class TitleCell: UICollectionViewCell {
         didSet {
             
             titleLabel.text = titleValue
-            setNeedsLayout()
-            layoutIfNeeded()
+        }
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .white
+        
+        if let font = UIFont(name: "Helvetica", size: 14.0) {
+            
+            titleLabel.font = font
         }
     }
     
