@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */; };
+		B6D81DA91ECCD00B0023F467 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81DA81ECCD00B0023F467 /* SongCell.swift */; };
+		B6D81DAB1ECCD65B0023F467 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81DAA1ECCD65B0023F467 /* Parts.swift */; };
+		B6D81DAE1ECCE62F0023F467 /* RowSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81DAD1ECCE62F0023F467 /* RowSelecting.swift */; };
 		FC0F45BA1EC7B00D005B8143 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F45B91EC7B00D005B8143 /* AppDelegate.swift */; };
 		FC0F45BF1EC7B00D005B8143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0F45BD1EC7B00D005B8143 /* Main.storyboard */; };
 		FC0F45C21EC7B00D005B8143 /* LivingElectro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC0F45C01EC7B00D005B8143 /* LivingElectro.xcdatamodeld */; };
@@ -53,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
+		B6D81DA81ECCD00B0023F467 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		B6D81DAA1ECCD65B0023F467 /* Parts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
+		B6D81DAD1ECCE62F0023F467 /* RowSelecting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowSelecting.swift; sourceTree = "<group>"; };
 		FC0F45B61EC7B00D005B8143 /* LivingElectro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivingElectro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0F45B91EC7B00D005B8143 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC0F45BE1EC7B00D005B8143 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6D81DAC1ECCE5D30023F467 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B6D81DAD1ECCE62F0023F467 /* RowSelecting.swift */,
+			);
+			name = protocols;
+			sourceTree = "<group>";
+		};
 		FC0F45AD1EC7B00D005B8143 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +155,7 @@
 		FC0F45B81EC7B00D005B8143 /* LivingElectro */ = {
 			isa = PBXGroup;
 			children = (
+				B6D81DAC1ECCE5D30023F467 /* protocols */,
 				FC0F460E1EC7C514005B8143 /* components */,
 				FC0F46011EC7B889005B8143 /* extensions */,
 				FC0F45FE1EC7B862005B8143 /* helpers */,
@@ -182,6 +197,7 @@
 				FC0F45EF1EC7B41E005B8143 /* Titles.swift */,
 				B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */,
 				FC0F45F11EC7B429005B8143 /* Songs.swift */,
+				B6D81DAA1ECCD65B0023F467 /* Parts.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -218,6 +234,7 @@
 			children = (
 				FC0F460F1EC7C527005B8143 /* TitleCell.swift */,
 				FC0F46111EC7D87E005B8143 /* PaddingLabel.swift */,
+				B6D81DA81ECCD00B0023F467 /* SongCell.swift */,
 			);
 			name = components;
 			sourceTree = "<group>";
@@ -390,6 +407,9 @@
 				FC0F460B1EC7BC94005B8143 /* Part+CoreDataProperties.swift in Sources */,
 				B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */,
 				FC0F45EE1EC7B40E005B8143 /* Home.swift in Sources */,
+				B6D81DAB1ECCD65B0023F467 /* Parts.swift in Sources */,
+				B6D81DAE1ECCE62F0023F467 /* RowSelecting.swift in Sources */,
+				B6D81DA91ECCD00B0023F467 /* SongCell.swift in Sources */,
 				FC0F46101EC7C527005B8143 /* TitleCell.swift in Sources */,
 				FC0F45BA1EC7B00D005B8143 /* AppDelegate.swift in Sources */,
 				FC0F460D1EC7BD76005B8143 /* NSManagedObjectContext.swift in Sources */,

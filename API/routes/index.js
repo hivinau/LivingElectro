@@ -7,10 +7,10 @@ var parts = [];
 
 request('http://www.livingelectro.com', function(err, res, body) {
 
-    var featuredTracks = reader.readPageIndex(body, 1);
-    var featuredMashupsAndBootlegs = reader.readPageIndex(body, 3);
-    var part3 = reader.readPageIndex(body, 5);
-    var part4 = reader.readPageIndex(body, 7);
+    var featuredTracks = reader.readPart(body, 1);
+    var featuredMashupsAndBootlegs = reader.readPart(body, 3);
+    var part3 = reader.readPart(body, 5);
+    var part4 = reader.readPart(body, 7);
 
     parts.push(featuredTracks);
     parts.push(featuredMashupsAndBootlegs);

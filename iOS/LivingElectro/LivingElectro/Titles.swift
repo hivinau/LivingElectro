@@ -8,12 +8,18 @@
 
 import UIKit
 
+public protocol TitlesDelegate: class {
+    
+    func titles(_ titles: Titles, didSelectRowAt indexPath: IndexPath)
+}
+
 @objc(Titles)
-public class Titles: UIViewController {
+public class Titles: UIViewController, RowSelecting {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     public var sizes = [Int: CGSize]()
+    public var titlesDelegate: TitlesDelegate?
     public var titles: [String?]? {
         didSet {
             
@@ -50,6 +56,12 @@ public class Titles: UIViewController {
             self.pageIndicator = pageIndicator
         }
     }
+    
+    public func selectRow(at indexPath: IndexPath) {
+        
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        notify()
+    }
 }
 
 extension Titles: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -85,20 +97,21 @@ extension Titles: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "titleCell", for: indexPath) as! TitleCell
+        let titleCell = collectionView.dequeueReusableCell(withReuseIdentifier: "titleCell", for: indexPath) as! TitleCell
         
         if let titles = titles,
             indexPath.row < titles.count {
             
-            cell.titleValue = titles[indexPath.row]
+            titleCell.titleValue = titles[indexPath.row]
         }
         
-        return cell
+        return titleCell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        titlesDelegate?.titles(self, didSelectRowAt: indexPath)
         notify()
     }
 }

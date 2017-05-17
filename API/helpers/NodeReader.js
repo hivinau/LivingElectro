@@ -2,7 +2,7 @@ var io = require('cheerio');
 
 var reader =  {
 
-    readPageIndex: function(body, index) {
+    readPart: function(body, index) {
 
         var $ = io.load(body);
 
@@ -25,8 +25,8 @@ var reader =  {
             var song = $(object).find('div.song_item_playa > div.playa').attr('rel') || '';
 
             var item = {
-                'link': link,
-                'image': image,
+                'link': 'http://www.livingelectro.com/' + link,
+                'image': 'http://www.livingelectro.com/' + image,
                 'title': title,
                 'artiste': artiste,
                 'tag': tag,

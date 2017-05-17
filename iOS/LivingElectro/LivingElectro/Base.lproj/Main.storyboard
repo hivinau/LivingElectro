@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -85,7 +87,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-d5-w2Q">
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <connections>
-                                    <segue destination="RK3-AT-P5M" kind="embed" id="UvQ-J7-Bih"/>
+                                    <segue destination="ep1-0W-qFz" kind="embed" id="JC0-yn-g86"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -116,19 +118,44 @@
         <!--Songs-->
         <scene sceneID="wNd-OB-m0J">
             <objects>
-                <tableViewController id="RK3-AT-P5M" customClass="Songs" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HtQ-Mw-7Ul">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                <tableViewController storyboardIdentifier="Songs" id="RK3-AT-P5M" customClass="Songs" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" id="HtQ-Mw-7Ul">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iA8-ad-KUn">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" id="iA8-ad-KUn" customClass="SongCell">
+                                <rect key="frame" x="0.0" y="1" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iA8-ad-KUn" id="USc-fy-JG4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-Nv-gpW">
+                                            <rect key="frame" x="0.0" y="8" width="375" height="150"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-ec-QX9" customClass="PaddingLabel" customModule="LivingElectro" customModuleProvider="target">
+                                            <rect key="frame" x="18" y="158" width="29.5" height="34"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eZb-Nv-gpW" firstAttribute="height" secondItem="USc-fy-JG4" secondAttribute="height" multiplier="3/4" id="SXt-cf-Bhc"/>
+                                        <constraint firstItem="eZb-Nv-gpW" firstAttribute="centerX" secondItem="USc-fy-JG4" secondAttribute="centerX" id="U0T-eH-zL9"/>
+                                        <constraint firstItem="1qT-ec-QX9" firstAttribute="leading" secondItem="USc-fy-JG4" secondAttribute="leadingMargin" constant="10" id="Vsc-CX-yZY"/>
+                                        <constraint firstItem="eZb-Nv-gpW" firstAttribute="width" secondItem="USc-fy-JG4" secondAttribute="width" id="fbI-hy-fuM"/>
+                                        <constraint firstItem="1qT-ec-QX9" firstAttribute="top" secondItem="eZb-Nv-gpW" secondAttribute="bottom" id="kkb-Ea-k3k"/>
+                                        <constraint firstAttribute="topMargin" secondItem="eZb-Nv-gpW" secondAttribute="top" id="nAI-g1-Rq1"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="1qT-ec-QX9" secondAttribute="trailing" constant="10" id="pIX-my-Es0"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1qT-ec-QX9" secondAttribute="bottom" id="r7h-VP-tVP"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="songImageView" destination="eZb-Nv-gpW" id="baE-t2-w73"/>
+                                    <outlet property="songLabel" destination="1qT-ec-QX9" id="AbG-gQ-UPk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -139,7 +166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfP-aw-nam" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="423"/>
+            <point key="canvasLocation" x="1810" y="493"/>
         </scene>
         <!--Titles-->
         <scene sceneID="yDR-dx-nQO">
@@ -253,6 +280,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emQ-aO-pH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1145" y="96"/>
+        </scene>
+        <!--Parts-->
+        <scene sceneID="hHG-J1-LbJ">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ep1-0W-qFz" customClass="Parts" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w82-5s-xnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="437"/>
         </scene>
     </scenes>
 </document>
