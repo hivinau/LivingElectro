@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 @objc(SongCell)
 public class SongCell: UITableViewCell {
@@ -14,10 +16,14 @@ public class SongCell: UITableViewCell {
     @IBOutlet weak var songImageView: UIImageView!
     @IBOutlet weak var songLabel: PaddingLabel!
     
-    public var songImage: UIImage? {
+    public var songImage: String? {
         didSet {
             
-            songImageView.image = songImage
+            if let songImage = songImage,
+                let url = URL(string: songImage) {
+                
+                songImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "placeholder"), imageTransition: .crossDissolve(0.2))
+            }
         }
     }
     
@@ -31,13 +37,15 @@ public class SongCell: UITableViewCell {
     public override func layoutSubviews() {
         super.layoutSubviews()
         
+        backgroundColor = .black
+        
         songImageView.contentMode = .scaleAspectFill
         songImageView.clipsToBounds = true
         
         songLabel.numberOfLines = 0
         songLabel.lineBreakMode = .byTruncatingTail
         songLabel.textAlignment = .left
-        songLabel.textColor = .black
+        songLabel.textColor = .white
         
         if let font = UIFont(name: "Helvetica", size: 14.0) {
             
@@ -48,7 +56,10 @@ public class SongCell: UITableViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         
+        songImageView.af_cancelImageRequest()
+        songImageView.layer.removeAllAnimations()
         songImageView.image = nil
+
         songLabel.text?.removeAll()
     }
 }

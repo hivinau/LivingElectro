@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */; };
+		B6D657861ED1CB34009D41F6 /* Localizable.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6D657851ED1CB33009D41F6 /* Localizable.plist */; };
+		B6D657891ED1D4C1009D41F6 /* Part~>Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D657881ED1D4C1009D41F6 /* Part~>Load.swift */; };
+		B6D6578B1ED1D855009D41F6 /* LocalizableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D6578A1ED1D855009D41F6 /* LocalizableHelper.swift */; };
 		B6D81DA91ECCD00B0023F467 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81DA81ECCD00B0023F467 /* SongCell.swift */; };
 		B6D81DAB1ECCD65B0023F467 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81DAA1ECCD65B0023F467 /* Parts.swift */; };
 		B6D81DAE1ECCE62F0023F467 /* RowSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81DAD1ECCE62F0023F467 /* RowSelecting.swift */; };
@@ -56,6 +59,9 @@
 
 /* Begin PBXFileReference section */
 		B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
+		B6D657851ED1CB33009D41F6 /* Localizable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Localizable.plist; sourceTree = "<group>"; };
+		B6D657881ED1D4C1009D41F6 /* Part~>Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Part~>Load.swift"; sourceTree = "<group>"; };
+		B6D6578A1ED1D855009D41F6 /* LocalizableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableHelper.swift; sourceTree = "<group>"; };
 		B6D81DA81ECCD00B0023F467 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		B6D81DAA1ECCD65B0023F467 /* Parts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
 		B6D81DAD1ECCE62F0023F467 /* RowSelecting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowSelecting.swift; sourceTree = "<group>"; };
@@ -119,6 +125,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6D657871ED1CBCA009D41F6 /* plists */ = {
+			isa = PBXGroup;
+			children = (
+				FC0F45C81EC7B00D005B8143 /* Info.plist */,
+				FC0F45FC1EC7B824005B8143 /* api.plist */,
+				B6D657851ED1CB33009D41F6 /* Localizable.plist */,
+			);
+			name = plists;
+			sourceTree = "<group>";
+		};
 		B6D81DAC1ECCE5D30023F467 /* protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +171,7 @@
 		FC0F45B81EC7B00D005B8143 /* LivingElectro */ = {
 			isa = PBXGroup;
 			children = (
+				B6D657871ED1CBCA009D41F6 /* plists */,
 				B6D81DAC1ECCE5D30023F467 /* protocols */,
 				FC0F460E1EC7C514005B8143 /* components */,
 				FC0F46011EC7B889005B8143 /* extensions */,
@@ -164,9 +181,7 @@
 				FC0F45BD1EC7B00D005B8143 /* Main.storyboard */,
 				FC0F45C31EC7B00D005B8143 /* Assets.xcassets */,
 				FC0F45C51EC7B00D005B8143 /* LaunchScreen.storyboard */,
-				FC0F45C81EC7B00D005B8143 /* Info.plist */,
 				FC0F45C01EC7B00D005B8143 /* LivingElectro.xcdatamodeld */,
-				FC0F45FC1EC7B824005B8143 /* api.plist */,
 			);
 			path = LivingElectro;
 			sourceTree = "<group>";
@@ -216,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				FC0F45FF1EC7B86E005B8143 /* ApiHelper.swift */,
+				B6D6578A1ED1D855009D41F6 /* LocalizableHelper.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 			children = (
 				FC0F46021EC7B89D005B8143 /* PropertyListSerialization~>ReadFile.swift */,
 				FC0F460C1EC7BD76005B8143 /* NSManagedObjectContext.swift */,
+				B6D657881ED1D4C1009D41F6 /* Part~>Load.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -352,6 +369,7 @@
 			files = (
 				FC0F45C71EC7B00D005B8143 /* LaunchScreen.storyboard in Resources */,
 				FC0F45FD1EC7B824005B8143 /* api.plist in Resources */,
+				B6D657861ED1CB34009D41F6 /* Localizable.plist in Resources */,
 				FC0F45C41EC7B00D005B8143 /* Assets.xcassets in Resources */,
 				FC0F45BF1EC7B00D005B8143 /* Main.storyboard in Resources */,
 			);
@@ -405,12 +423,14 @@
 				FC0F46071EC7BAC1005B8143 /* Song+CoreDataProperties.swift in Sources */,
 				FC0F46121EC7D87E005B8143 /* PaddingLabel.swift in Sources */,
 				FC0F460B1EC7BC94005B8143 /* Part+CoreDataProperties.swift in Sources */,
+				B6D6578B1ED1D855009D41F6 /* LocalizableHelper.swift in Sources */,
 				B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */,
 				FC0F45EE1EC7B40E005B8143 /* Home.swift in Sources */,
 				B6D81DAB1ECCD65B0023F467 /* Parts.swift in Sources */,
 				B6D81DAE1ECCE62F0023F467 /* RowSelecting.swift in Sources */,
 				B6D81DA91ECCD00B0023F467 /* SongCell.swift in Sources */,
 				FC0F46101EC7C527005B8143 /* TitleCell.swift in Sources */,
+				B6D657891ED1D4C1009D41F6 /* Part~>Load.swift in Sources */,
 				FC0F45BA1EC7B00D005B8143 /* AppDelegate.swift in Sources */,
 				FC0F460D1EC7BD76005B8143 /* NSManagedObjectContext.swift in Sources */,
 				FC0F45F01EC7B41E005B8143 /* Titles.swift in Sources */,

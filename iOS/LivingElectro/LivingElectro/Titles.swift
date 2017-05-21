@@ -20,10 +20,11 @@ public class Titles: UIViewController, RowSelecting {
     
     public var sizes = [Int: CGSize]()
     public var titlesDelegate: TitlesDelegate?
-    public var titles: [String?]? {
+    public var genres: [String]? {
         didSet {
             
             calculateTextSizes()
+            collectionView.reloadData()
         }
     }
     
@@ -40,12 +41,9 @@ public class Titles: UIViewController, RowSelecting {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.bounces = true
-        collectionView.alwaysBounceHorizontal = true
+        collectionView.alwaysBounceHorizontal = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-        notify()
     }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,9 +85,9 @@ extension Titles: UICollectionViewDataSource, UICollectionViewDelegate {
         
         var count = 0
         
-        if let titles = titles {
+        if let genres = genres {
             
-            count = titles.count
+            count = genres.count
         }
         
         return count
@@ -99,10 +97,10 @@ extension Titles: UICollectionViewDataSource, UICollectionViewDelegate {
         
         let titleCell = collectionView.dequeueReusableCell(withReuseIdentifier: "titleCell", for: indexPath) as! TitleCell
         
-        if let titles = titles,
-            indexPath.row < titles.count {
+        if let genres = genres,
+            indexPath.row < genres.count {
             
-            titleCell.titleValue = titles[indexPath.row]
+            titleCell.titleValue = genres[indexPath.row]
         }
         
         return titleCell
@@ -133,18 +131,18 @@ extension Titles: UICollectionViewDelegateFlowLayout {
     
     public func calculateTextSizes() {
         
-        if let titles = titles {
+        if let genres = genres {
             
             if let font = UIFont(name: "Helvetica", size: 14.0) {
                 
-                for i in 0 ... titles.count - 1 {
+                for i in 0 ... genres.count - 1 {
                     
-                    if let title = titles[i] as NSString? {
-                        
-                        let indexPath = IndexPath(row: i, section: 0)
-                        
-                        sizes[indexPath.row] = title.size(attributes: [NSFontAttributeName: font])
-                    }
+                    let indexPath = IndexPath(row: i, section: 0)
+                    let genre = genres[i] as NSString
+                    
+                    var size = genre.size(attributes: [NSFontAttributeName: font])
+                    size.width += (10.0 * CGFloat(genres.count))
+                    sizes[indexPath.row] = size
                 }
             }
         }

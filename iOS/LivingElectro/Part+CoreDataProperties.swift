@@ -2,7 +2,7 @@
 //  Part+CoreDataProperties.swift
 //  LivingElectro
 //
-//  Created by Aude Sautier on 14/05/2017.
+//  Created by iOS Developer on 21/05/2017.
 //  Copyright © 2017 Hivinau GRAFFE. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ extension Part {
         return NSFetchRequest<Part>(entityName: "Part")
     }
 
-    @NSManaged public var title: String?
+    @NSManaged public var genre: String?
     @NSManaged public var songs: NSSet?
 
 }

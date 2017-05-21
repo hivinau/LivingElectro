@@ -2,11 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>host</key>
-	<string>http://m.livingelectro.com/m/</string>
-	<key>listAll</key>
-	<string>All/%d</string>
-	<key>listByGenre</key>
-	<string>%@/%d</string>
+	<key>home</key>
+	<string>Home</string>
+	<key>genres</key>
+	<array>
+		<string>Electro</string>
+		<string>House</string>
+		<string>Dubstep</string>
+		<string>Trance</string>
+	</array>
 </dict>
 </plist>

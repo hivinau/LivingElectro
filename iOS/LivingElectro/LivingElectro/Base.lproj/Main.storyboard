@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x1E-xa-ljD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x1E-xa-ljD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,11 +47,15 @@
         <!--Navigation Controller-->
         <scene sceneID="kL0-Tk-tmY">
             <objects>
-                <navigationController id="JUm-fa-4qx" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="JUm-fa-4qx" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="urb-zZ-j4e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="nuq-wt-ZmY">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="rSH-zS-3uw" kind="relationship" relationship="rootViewController" id="iDt-KC-21t"/>
                     </connections>
@@ -76,7 +80,7 @@
                                 <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRe-25-v7n">
-                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="X1Q-ji-HMa"/>
                                 </constraints>
@@ -85,7 +89,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-d5-w2Q">
-                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                                 <connections>
                                     <segue destination="ep1-0W-qFz" kind="embed" id="JC0-yn-g86"/>
                                 </connections>
@@ -132,10 +136,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-Nv-gpW">
-                                            <rect key="frame" x="0.0" y="8" width="375" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-ec-QX9" customClass="PaddingLabel" customModule="LivingElectro" customModuleProvider="target">
-                                            <rect key="frame" x="18" y="158" width="29.5" height="34"/>
+                                            <rect key="frame" x="18" y="150" width="29.5" height="50"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -147,11 +151,13 @@
                                         <constraint firstItem="1qT-ec-QX9" firstAttribute="leading" secondItem="USc-fy-JG4" secondAttribute="leadingMargin" constant="10" id="Vsc-CX-yZY"/>
                                         <constraint firstItem="eZb-Nv-gpW" firstAttribute="width" secondItem="USc-fy-JG4" secondAttribute="width" id="fbI-hy-fuM"/>
                                         <constraint firstItem="1qT-ec-QX9" firstAttribute="top" secondItem="eZb-Nv-gpW" secondAttribute="bottom" id="kkb-Ea-k3k"/>
-                                        <constraint firstAttribute="topMargin" secondItem="eZb-Nv-gpW" secondAttribute="top" id="nAI-g1-Rq1"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="1qT-ec-QX9" secondAttribute="trailing" constant="10" id="pIX-my-Es0"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1qT-ec-QX9" secondAttribute="bottom" id="r7h-VP-tVP"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1qT-ec-QX9" secondAttribute="bottom" id="LMo-GL-TuC"/>
+                                    <constraint firstItem="eZb-Nv-gpW" firstAttribute="top" secondItem="iA8-ad-KUn" secondAttribute="top" id="LzQ-5v-S5u"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="songImageView" destination="eZb-Nv-gpW" id="baE-t2-w73"/>
                                     <outlet property="songLabel" destination="1qT-ec-QX9" id="AbG-gQ-UPk"/>

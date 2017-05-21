@@ -15,6 +15,11 @@ public extension PropertyListSerialization {
         return PropertyListSerialization.read(of: "api")
     }
     
+    public static func localizable() -> Dictionary<String,Any>? {
+        
+        return PropertyListSerialization.read(of: "Localizable")
+    }
+    
     private static func read(of api: String) -> Dictionary<String,Any>? {
         
         var content: Dictionary<String,Any>? = nil

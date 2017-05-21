@@ -16,6 +16,7 @@ public protocol PartsDelegate: class {
 @objc(Parts)
 public class Parts: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, RowSelecting {
     
+    private var currentPosition = -1
     private var controllers = [UIViewController]()
     private var scrollView: UIScrollView?
     private let locker = NSLock()
@@ -50,14 +51,9 @@ public class Parts: UIPageViewController, UIPageViewControllerDataSource, UIPage
         
         if indexPath.row < controllers.count {
             
-            let controller = controllers[indexPath.row]
+            let direction = currentPosition - indexPath.row > 0 ? UIPageViewControllerNavigationDirection.reverse : UIPageViewControllerNavigationDirection.forward
             
-            if let position = self.controllers.index(of: controller) {
-                
-                let direction = position - indexPath.row > 0 ? UIPageViewControllerNavigationDirection.reverse : UIPageViewControllerNavigationDirection.forward
-                
-                setViewControllers([controllers[indexPath.row]], direction: direction, animated: true, completion: nil)
-            }
+            setViewControllers([controllers[indexPath.row]], direction: direction, animated: true, completion: nil)
         }
     }
     
@@ -138,7 +134,7 @@ public class Parts: UIPageViewController, UIPageViewControllerDataSource, UIPage
         notify()
     }
     
-    public func addPart(_ part: Part) {
+    public func addSongs(for title: String) {
         
         locker.lock() ; defer { locker.unlock() }
         
@@ -146,10 +142,7 @@ public class Parts: UIPageViewController, UIPageViewControllerDataSource, UIPage
         
         if let controller = storyBoard.instantiateViewController(withIdentifier: "Songs") as? Songs {
             
-            if let songs = part.songs {
-                
-                controller.songs = songs.allObjects as? [Song]
-            }
+            controller.title = title
             
             controllers.append(controller)
             setViewControllers([controllers[0]], direction: .forward, animated: true, completion: nil)
@@ -163,6 +156,8 @@ public class Parts: UIPageViewController, UIPageViewControllerDataSource, UIPage
             let controller = controllers.last {
             
             if let index = self.controllers.index(of: controller) {
+                
+                currentPosition = index
                 
                 let indexPath = IndexPath(item: index, section: 0)
                 partsDelegate?.parts(self, didSelectRowAt: indexPath)

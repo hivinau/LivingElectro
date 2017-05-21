@@ -2,7 +2,7 @@
 //  Song+CoreDataProperties.swift
 //  LivingElectro
 //
-//  Created by Aude Sautier on 14/05/2017.
+//  Created by iOS Developer on 21/05/2017.
 //  Copyright © 2017 Hivinau GRAFFE. All rights reserved.
 //
 
@@ -17,11 +17,11 @@ extension Song {
     }
 
     @NSManaged public var artiste: String?
-    @NSManaged public var image: String?
-    @NSManaged public var link: String?
-    @NSManaged public var song: String?
-    @NSManaged public var tag: String?
-    @NSManaged public var title: String?
+    @NSManaged public var name: String?
+    @NSManaged public var stream: String?
+    @NSManaged public var published: String?
+    @NSManaged public var imageSmall: String?
+    @NSManaged public var imageLarge: String?
     @NSManaged public var part: Part?
 
 }

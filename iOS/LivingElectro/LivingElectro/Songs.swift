@@ -9,11 +9,13 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import CoreData
 
 @objc(Songs)
 public class Songs: UITableViewController {
     
-    public var songs: [Song?]?
+    public var songs: [Song]?
+    private var dateFormatter = DateFormatter()
     private var downloader = ImageDownloader(configuration: ImageDownloader.defaultURLSessionConfiguration(),
                                              downloadPrioritization: .fifo,
                                              maximumActiveDownloads: 4,
@@ -27,6 +29,11 @@ public class Songs: UITableViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = true
         tableView.alwaysBounceVertical = true
+        
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        loadSongs()
     }
     
     public override func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,21 +65,14 @@ public class Songs: UITableViewController {
             if let songs = songs,
                 indexPath.row < songs.count {
                 
-                if let song = songs[indexPath.row] {
+                let song = songs[indexPath.row]
+                songCell.songValue = song.value(forKeyPath: "name") as? String
+                
+                if let url = song.value(forKeyPath: "imageLarge") as? String {
                     
-                    songCell.songValue = song.value(forKeyPath: "title") as? String
-                    
-                    if !tableView.isDragging && !tableView.isDecelerating {
-                        
-                        if let url = song.value(forKeyPath: "image") as? String {
-                            
-                            downloadImage(from: url, for: indexPath)
-                        }
-                    }
+                    songCell.songImage = url
                 }
             }
-            
-            songCell.songImage = UIImage(named: "placeholder")
             
             return songCell
         }
@@ -80,60 +80,55 @@ public class Songs: UITableViewController {
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     
-    public override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    private func loadSongs() {
         
-        if !decelerate {
+        if let genre = title {
             
-            scrollViewDidEndDecelerating(scrollView)
-        }
-    }
-    
-    public override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        if let indexPaths = tableView.indexPathsForVisibleRows {
-            
-            indexPaths.forEach({
-                indexPath in
+            if let url = url(for: genre, page: 0) {
                 
-                if let songs = songs,
-                    indexPath.row < songs.count {
+                Part.load(from: url) {
+                    [unowned self] part in
                     
-                    if let song = songs[indexPath.row] {
+                    if let part = part,
+                        let songs = part.songs {
                         
-                        if let url = song.value(forKeyPath: "image") as? String {
+                        self.songs = songs.sorted(by: {
+                            lhs, rhs in
                             
-                            downloadImage(from: url, for: indexPath)
-                        }
+                            if let lhs = lhs as? NSManagedObject,
+                                let rhs = rhs as? NSManagedObject {
+                                
+                                if let lhsDateString = lhs.value(forKeyPath: "published") as? String,
+                                    let rhsDateString = rhs.value(forKeyPath: "published") as? String {
+                                    
+                                    if let lhsDate = self.dateFormatter.date(from: lhsDateString),
+                                        let rhsDate = self.dateFormatter.date(from: rhsDateString) {
+                                        
+                                        return lhsDate.compare(rhsDate) == .orderedDescending
+                                    }
+                                }
+                            }
+                            
+                            return false
+                            
+                        }) as? [Song]
+                        self.tableView.reloadData()
                     }
                 }
-            })
+            }
         }
     }
-
     
-    private func downloadImage(from url: String, for indexPath: IndexPath) {
+    private func url(for genre: String, page: Int) -> String? {
         
-        do {
+        if let host = ApiHelper.value(for: "host") as? String,
+            let route = ApiHelper.value(for: "listByGenre") as? String {
             
-            var urlRequest = try URLRequest(url: url, method: .get)
-            urlRequest.cachePolicy = .returnCacheDataElseLoad
-
-            downloader.download(urlRequest) {
-                [unowned self] response in
-                
-                if let image = response.result.value,
-                    let songCell = self.tableView.cellForRow(at: indexPath) as? SongCell {
-                    
-                    songCell.songImage = image
-                }
-            }
-
-        } catch {
+            let template = String(format: "%@%@", host, route)
             
-            if let songCell = self.tableView.cellForRow(at: indexPath) as? SongCell {
-                
-                songCell.songImage = UIImage(named: "placeholder")
-            }
+            return String(format: template, genre, page)
         }
+        
+        return nil
     }
 }

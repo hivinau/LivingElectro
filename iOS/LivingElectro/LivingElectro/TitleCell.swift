@@ -13,10 +13,18 @@ public class TitleCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: PaddingLabel!
     
+    public override var isSelected: Bool {
+        didSet {
+            
+            titleLabel.textColor = isSelected ? .white : .gray
+        }
+    }
+    
     public var titleValue: String? {
         didSet {
             
             titleLabel.text = titleValue
+            titleLabel.sizeToFit()
         }
     }
     
@@ -26,7 +34,7 @@ public class TitleCell: UICollectionViewCell {
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byTruncatingTail
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .white
+        titleLabel.textColor = isSelected ? .white : .gray
         
         if let font = UIFont(name: "Helvetica", size: 14.0) {
             
@@ -39,5 +47,4 @@ public class TitleCell: UICollectionViewCell {
         
         titleLabel.text?.removeAll()
     }
-
 }

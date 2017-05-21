@@ -7,24 +7,27 @@
 //
 
 import UIKit
-import CoreData
 
 @objc(Home)
 public class Home: UIViewController, TitlesDelegate, PartsDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
-    private var titlesController: Titles?
-    private var partsController: Parts?
-    public var parts: [Part]?
+    private var titles: Titles?
+    private var parts: Parts?
+    
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+    }
     
     public func titles(_ titles: Titles, didSelectRowAt indexPath: IndexPath) {
         
-        partsController?.selectRow(at: indexPath)
+        parts?.selectRow(at: indexPath)
     }
     
     public func parts(_ parts: Parts, didSelectRowAt indexPath: IndexPath) {
         
-        titlesController?.selectRow(at: indexPath)
+        titles?.selectRow(at: indexPath)
     }
     
     public override func viewDidLoad() {
@@ -32,38 +35,37 @@ public class Home: UIViewController, TitlesDelegate, PartsDelegate {
         
         imageView.image = UIImage(named: "app_background")
         imageView.contentMode = .scaleAspectFill
+
+        titles?.titlesDelegate = self
+        parts?.partsDelegate = self
         
-        titlesController?.titlesDelegate = self
-        partsController?.partsDelegate = self
+        if let genres = LocalizableHelper.value(for: "genres") as? [String] {
+            
+            titles?.genres = genres
+            
+            genres.forEach {
+                genre in
+                
+                parts?.addSongs(for: genre)
+            }
+        }
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        titles?.selectRow(at: indexPath)
+        parts?.selectRow(at: indexPath)
     }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if let parts = parts {
+        if let titles = segue.destination as? Titles {
             
-            if let controller = segue.destination as? Titles {
-                
-                let titles = parts.map({
-                    part in
-                    
-                    return part.title
-                })
-                
-                controller.titles = titles
-                titlesController = controller
-            }
+            self.titles = titles
             
-            if let controller = segue.destination as? Parts {
-                
-                parts.forEach({
-                    part in
-
-                    controller.addPart(part)
-                })
-                
-                partsController = controller
-            }
+        } else if let parts = segue.destination as? Parts {
+            
+            self.parts = parts
         }
     }
 }
