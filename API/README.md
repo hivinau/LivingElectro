@@ -1,5 +1,5 @@
 # LivingElectro (API - Javascript)
-##Installation
+## Installation
 
 - Open up Terminal and run the following command to install dependencies :
 ```bash
