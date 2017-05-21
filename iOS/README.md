@@ -1,4 +1,4 @@
-# LivingElectro
+# LivingElectro (iOS - Swift)
 ## Requirements
 
 - Xcode 8.1+
