@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,8 @@
 
         <activity android:name=".activities.MainActivity"
             android:launchMode="singleTask"
-            android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/Theme.Transparent">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
