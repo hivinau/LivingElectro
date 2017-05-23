@@ -56,7 +56,7 @@ public class PartsAdapter extends FragmentStatePagerAdapter {
         Bundle arguments = new Bundle();
 
         Part part = parts.get(position);
-        arguments.putParcelableArray(Song.class.getName(), part.getSongs());
+        arguments.putString(Part.class.getName(), part.getGenre());
 
         Songs songs = new Songs();
         songs.setArguments(arguments);

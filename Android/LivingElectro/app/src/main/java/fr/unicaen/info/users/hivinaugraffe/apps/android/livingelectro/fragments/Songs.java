@@ -1,7 +1,10 @@
 package fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.fragments;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.R;
+import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.SongsDownloader;
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.adapters.SongsAdapter;
+import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.models.Part;
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.models.Song;
 
 /**
@@ -22,6 +27,39 @@ public class Songs extends Fragment {
 
     private RecyclerView recyclerView = null;
     private SongsAdapter adapter = null;
+    private IntentFilter filter = null;
+    private String genre = null;
+
+    private BroadcastReceiver songReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            if(intent != null) {
+
+                String genre = intent.getAction();
+
+                if(genre.equals(Songs.this.genre)) {
+
+                    Bundle extras = intent.getExtras();
+
+                    if(extras != null) {
+
+                        final Song song = extras.getParcelable(Song.class.getName());
+
+                        getActivity().runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+
+                                adapter.addSong(song);
+                            }
+                        });
+                    }
+                }
+            }
+        }
+    };
 
     @Nullable
     @Override
@@ -46,17 +84,24 @@ public class Songs extends Fragment {
 
         if(arguments != null) {
 
-            Parcelable[] songs = arguments.getParcelableArray(Song.class.getName());
+            String genre = arguments.getString(Part.class.getName());
 
-            if(songs != null && songs.length > 0) {
+            if(genre != null && !genre.isEmpty()) {
 
-                for (Parcelable song : songs) {
+                this.genre = genre; //use to be a reference when song is sent as broacast message by songsDownloader service
 
-                    if(song instanceof Song) {
+                filter = new IntentFilter();
+                filter.addAction(genre);
 
-                        adapter.addSong((Song) song);
-                    }
-                }
+                String requestUrl = String.format("http://m.livingelectro.com/m/%s/0", genre);
+
+                Bundle bundle = new Bundle();
+                bundle.putString(Songs.class.getName(), requestUrl);
+
+                Intent intent = new Intent(getActivity(), SongsDownloader.class);
+                intent.putExtras(bundle);
+
+                getActivity().startService(intent);
             }
         }
     }
@@ -74,6 +119,7 @@ public class Songs extends Fragment {
         super.onResume();
 
         recyclerView.setAdapter(adapter);
+        getActivity().registerReceiver(songReceiver, filter);
     }
 
     @Override
@@ -88,5 +134,6 @@ public class Songs extends Fragment {
         super.onPause();
 
         recyclerView.setAdapter(null);
+        getActivity().unregisterReceiver(songReceiver);
     }
 }
