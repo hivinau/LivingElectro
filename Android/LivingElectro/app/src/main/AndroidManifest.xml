@@ -15,7 +15,7 @@
         <activity android:name=".activities.MainActivity"
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.Transparent">
+            android:theme="@style/AppTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +33,7 @@
         </activity>
 
         <service android:name=".SongsDownloader"
+            android:enabled="true"
             android:exported="false"/>
 
     </application>

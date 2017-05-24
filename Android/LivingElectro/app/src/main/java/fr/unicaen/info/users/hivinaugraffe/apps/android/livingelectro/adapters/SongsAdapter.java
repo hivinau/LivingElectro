@@ -75,7 +75,11 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
 
             Song song = songs.get(position);
 
-            Picasso.with(holder.imageView.getContext()).load(song.getImageLarge()).into(holder.imageView);
+            Picasso.with(holder.imageView.getContext())
+                    .load(song.getImageLarge())
+                    .placeholder(R.drawable.placeholder)
+                    .into(holder.imageView);
+
             holder.textView.setText(song.getName());
         }
     }

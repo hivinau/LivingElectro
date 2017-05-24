@@ -10,7 +10,6 @@ import java.util.List;
 
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.fragments.Songs;
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.models.Part;
-import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.models.Song;
 
 /**
  * Created by ios_developer on 21/05/2017.

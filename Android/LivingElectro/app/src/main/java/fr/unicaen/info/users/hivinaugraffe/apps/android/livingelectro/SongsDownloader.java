@@ -22,6 +22,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Locale;
+
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.fragments.Songs;
 import fr.unicaen.info.users.hivinaugraffe.apps.android.livingelectro.models.Song;
 
@@ -48,6 +55,7 @@ public final class SongsDownloader extends Service {
 
     private IBinder binder = null;
     private RequestQueue requestQueue = null;
+    private SimpleDateFormat dateFormatter = null;
 
     private final Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {
 
@@ -65,6 +73,8 @@ public final class SongsDownloader extends Service {
                         JSONArray tracks = response.getJSONArray("featured_tracks");
 
                         int count = tracks.length();
+
+                        Song[] songs = new Song[count];
 
                         for (int i = 0; i < count; i++) {
 
@@ -84,8 +94,33 @@ public final class SongsDownloader extends Service {
                                         track.getString("img_small"),
                                         track.getString("img_large"));
 
-                                sendSong(song, genre);
+                                songs[i] = song;
                             }
+                        }
+
+                        Arrays.sort(songs, new Comparator<Song>() {
+
+                            @Override
+                            public int compare(Song song1, Song song2) {
+
+                                int result = -1;
+
+                                try {
+
+                                    Date date1 = dateFormatter.parse(song1.getPublished());
+                                    Date date2 = dateFormatter.parse(song2.getPublished());
+
+                                    result = date1.compareTo(date2);
+
+                                } catch (ParseException ignored) {}
+
+                                return -result;
+                            }
+                        });
+
+                        for (Song song : songs) {
+
+                            sendSong(song, genre);
                         }
                     }
                 }
@@ -110,6 +145,8 @@ public final class SongsDownloader extends Service {
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024);
         Network network = new BasicNetwork(new HurlStack());
         requestQueue = new RequestQueue(cache, network);
+
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.FRENCH);
     }
 
     @Override
