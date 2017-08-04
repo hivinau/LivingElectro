@@ -16,6 +16,7 @@ public protocol TitlesDelegate: class {
 @objc(Titles)
 public class Titles: UIViewController, RowSelecting {
     
+    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     public var sizes = [Int: CGSize]()
@@ -44,6 +45,28 @@ public class Titles: UIViewController, RowSelecting {
         collectionView.alwaysBounceHorizontal = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        let blur = UIView.blur(style: .light)
+        
+        blurView.addSubview(blur)
+        
+        blur.translatesAutoresizingMaskIntoConstraints = false
+        
+        let blurHorizontalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|[blur]|",
+            options: [],
+            metrics: nil,
+            views: ["blur": blur])
+        
+        let blurVerticalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|[blur]|",
+            options: [],
+            metrics: nil,
+            views: ["blur": blur])
+        
+        blurView.addConstraints(blurHorizontalConstraints)
+        blurView.addConstraints(blurVerticalConstraints)
+
     }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

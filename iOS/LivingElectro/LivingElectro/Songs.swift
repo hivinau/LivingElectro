@@ -29,6 +29,7 @@ public class Songs: UITableViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = true
         tableView.alwaysBounceVertical = true
+        tableView.contentInset = UIEdgeInsets(top: 60.0, left: 0, bottom: 0, right: 0)
         
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

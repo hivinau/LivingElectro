@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x1E-xa-ljD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x1E-xa-ljD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,6 +79,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ad3-9D-5rS">
                                 <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
                             </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-d5-w2Q">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <segue destination="ep1-0W-qFz" kind="embed" id="JC0-yn-g86"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRe-25-v7n">
                                 <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                 <constraints>
@@ -88,16 +94,9 @@
                                     <segue destination="ccu-Qv-nMZ" kind="embed" id="C9I-Ex-9RJ"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-d5-w2Q">
-                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
-                                <connections>
-                                    <segue destination="ep1-0W-qFz" kind="embed" id="JC0-yn-g86"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zaf-d5-w2Q" firstAttribute="top" secondItem="LRe-25-v7n" secondAttribute="bottom" id="05p-oT-gcx"/>
                             <constraint firstItem="ad3-9D-5rS" firstAttribute="centerX" secondItem="Nd7-GB-PHi" secondAttribute="centerX" id="2qf-9P-PrO"/>
                             <constraint firstItem="Zaf-d5-w2Q" firstAttribute="centerX" secondItem="Nd7-GB-PHi" secondAttribute="centerX" id="3C1-bB-a8f"/>
                             <constraint firstItem="ad3-9D-5rS" firstAttribute="centerY" secondItem="Nd7-GB-PHi" secondAttribute="centerY" id="5w7-TV-Zrg"/>
@@ -107,6 +106,7 @@
                             <constraint firstItem="ad3-9D-5rS" firstAttribute="width" secondItem="Nd7-GB-PHi" secondAttribute="width" id="j30-Da-RuC"/>
                             <constraint firstItem="LRe-25-v7n" firstAttribute="top" secondItem="MXw-ZW-h2g" secondAttribute="bottom" id="j3r-2M-dvs"/>
                             <constraint firstItem="ad3-9D-5rS" firstAttribute="height" secondItem="Nd7-GB-PHi" secondAttribute="height" id="ltb-oO-u2c"/>
+                            <constraint firstItem="Zaf-d5-w2Q" firstAttribute="top" secondItem="MXw-ZW-h2g" secondAttribute="bottom" id="ouR-04-Q2X"/>
                             <constraint firstItem="LRe-25-v7n" firstAttribute="width" secondItem="Nd7-GB-PHi" secondAttribute="width" id="prH-Jc-a7Q"/>
                         </constraints>
                     </view>
@@ -122,7 +122,7 @@
         <!--Songs-->
         <scene sceneID="wNd-OB-m0J">
             <objects>
-                <tableViewController storyboardIdentifier="Songs" id="RK3-AT-P5M" customClass="Songs" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Songs" automaticallyAdjustsScrollViewInsets="NO" id="RK3-AT-P5M" customClass="Songs" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" id="HtQ-Mw-7Ul">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,6 +186,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgM-l8-wcU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zVQ-FR-sfO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -236,14 +239,19 @@
                         <constraints>
                             <constraint firstItem="zVQ-FR-sfO" firstAttribute="top" secondItem="lCf-lL-wS4" secondAttribute="bottom" id="5Ne-Ei-lyp"/>
                             <constraint firstItem="zVQ-FR-sfO" firstAttribute="width" secondItem="YId-N0-HJe" secondAttribute="width" id="99v-as-lRJ"/>
+                            <constraint firstItem="fgM-l8-wcU" firstAttribute="top" secondItem="YId-N0-HJe" secondAttribute="top" id="CV8-yc-Yn3"/>
                             <constraint firstItem="zVQ-FR-sfO" firstAttribute="centerX" secondItem="YId-N0-HJe" secondAttribute="centerX" id="Mo4-MZ-wB4"/>
+                            <constraint firstAttribute="bottom" secondItem="fgM-l8-wcU" secondAttribute="bottom" id="S2G-NC-G6i"/>
                             <constraint firstItem="17i-55-P6l" firstAttribute="top" secondItem="zVQ-FR-sfO" secondAttribute="bottom" id="cV6-Mh-YBy"/>
                             <constraint firstItem="17i-55-P6l" firstAttribute="centerX" secondItem="YId-N0-HJe" secondAttribute="centerX" id="eEa-Vq-Q1s"/>
                             <constraint firstItem="VZA-bl-V96" firstAttribute="top" secondItem="17i-55-P6l" secondAttribute="bottom" id="tBy-py-nQY"/>
+                            <constraint firstItem="fgM-l8-wcU" firstAttribute="leading" secondItem="YId-N0-HJe" secondAttribute="leading" id="ulZ-xz-Hn9"/>
                             <constraint firstItem="17i-55-P6l" firstAttribute="width" secondItem="zVQ-FR-sfO" secondAttribute="width" id="x2O-Xo-Eqm"/>
+                            <constraint firstAttribute="trailing" secondItem="fgM-l8-wcU" secondAttribute="trailing" id="ztP-R4-bge"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="fgM-l8-wcU" id="LyD-sH-iq7"/>
                         <outlet property="collectionView" destination="zVQ-FR-sfO" id="Hs9-Mf-1VB"/>
                     </connections>
                 </viewController>

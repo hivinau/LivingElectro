@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B63892031F352371003D1F37 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63892001F352371003D1F37 /* RxCocoa.framework */; };
+		B63892041F352371003D1F37 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63892011F352371003D1F37 /* RxSwift.framework */; };
+		B63892081F35329D003D1F37 /* UIView~>BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63892071F35329D003D1F37 /* UIView~>BlurEffect.swift */; };
 		B6AF8FE61ECA2E6700F9A37A /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */; };
 		B6D657861ED1CB34009D41F6 /* Localizable.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6D657851ED1CB33009D41F6 /* Localizable.plist */; };
 		B6D657891ED1D4C1009D41F6 /* Part~>Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D657881ED1D4C1009D41F6 /* Part~>Load.swift */; };
@@ -58,6 +61,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B63892001F352371003D1F37 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = dependencies/RxCocoa.framework; sourceTree = "<group>"; };
+		B63892011F352371003D1F37 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = dependencies/RxSwift.framework; sourceTree = "<group>"; };
+		B63892021F352371003D1F37 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = dependencies/RxTest.framework; sourceTree = "<group>"; };
+		B63892071F35329D003D1F37 /* UIView~>BlurEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView~>BlurEffect.swift"; sourceTree = "<group>"; };
 		B6AF8FE51ECA2E6700F9A37A /* PageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
 		B6D657851ED1CB33009D41F6 /* Localizable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Localizable.plist; sourceTree = "<group>"; };
 		B6D657881ED1D4C1009D41F6 /* Part~>Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Part~>Load.swift"; sourceTree = "<group>"; };
@@ -102,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63892031F352371003D1F37 /* RxCocoa.framework in Frameworks */,
+				B63892041F352371003D1F37 /* RxSwift.framework in Frameworks */,
 				FC0F45F71EC7B50B005B8143 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
 				FC0F45F81EC7B50B005B8143 /* AlamofireImage.framework in Frameworks */,
 				FC0F45F91EC7B50B005B8143 /* Alamofire.framework in Frameworks */,
@@ -220,6 +229,9 @@
 		FC0F45F31EC7B50B005B8143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B63892001F352371003D1F37 /* RxCocoa.framework */,
+				B63892011F352371003D1F37 /* RxSwift.framework */,
+				B63892021F352371003D1F37 /* RxTest.framework */,
 				FC0F45F41EC7B50B005B8143 /* AlamofireNetworkActivityIndicator.framework */,
 				FC0F45F51EC7B50B005B8143 /* AlamofireImage.framework */,
 				FC0F45F61EC7B50B005B8143 /* Alamofire.framework */,
@@ -242,6 +254,7 @@
 				FC0F46021EC7B89D005B8143 /* PropertyListSerialization~>ReadFile.swift */,
 				FC0F460C1EC7BD76005B8143 /* NSManagedObjectContext.swift */,
 				B6D657881ED1D4C1009D41F6 /* Part~>Load.swift */,
+				B63892071F35329D003D1F37 /* UIView~>BlurEffect.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -401,6 +414,8 @@
 				"$(SRCROOT)/dependencies/AlamofireNetworkActivityIndicator.framework",
 				"$(SRCROOT)/dependencies/AlamofireImage.framework",
 				"$(SRCROOT)/dependencies/Alamofire.framework",
+				"$(SRCROOT)/dependencies/RxCocoa.framework",
+				"$(SRCROOT)/dependencies/RxSwift.framework",
 			);
 			outputPaths = (
 			);
@@ -433,6 +448,7 @@
 				B6D657891ED1D4C1009D41F6 /* Part~>Load.swift in Sources */,
 				FC0F45BA1EC7B00D005B8143 /* AppDelegate.swift in Sources */,
 				FC0F460D1EC7BD76005B8143 /* NSManagedObjectContext.swift in Sources */,
+				B63892081F35329D003D1F37 /* UIView~>BlurEffect.swift in Sources */,
 				FC0F45F01EC7B41E005B8143 /* Titles.swift in Sources */,
 				FC0F46001EC7B86E005B8143 /* ApiHelper.swift in Sources */,
 				FC0F46061EC7BAC1005B8143 /* Song+CoreDataClass.swift in Sources */,
